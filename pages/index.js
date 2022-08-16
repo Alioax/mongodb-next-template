@@ -5,12 +5,12 @@ import styles from '../styles/Home.module.css'
 
 export default function Home() {
 
-    const [restaurants, setRestaurants] = useState([]);
+    const [colors, setColors] = useState([]);
 
     useEffect(() => {
         (async () => {
             const results = await fetch("/api/list").then(response => response.json());
-            setRestaurants(results);
+            setColors(results);
         })();
     }, []);
 
@@ -28,10 +28,9 @@ export default function Home() {
                 </h1>
                 <br />
                 <div className={styles.grid}>
-                    {restaurants.map(restaurant => (
-                        <div className={styles.card} key={restaurant._id}>
-                            <h2>{restaurant.name}</h2>
-                            <p>{restaurant.address.street}</p>
+                    {colors.map(color => (
+                        <div className={styles.card} key={color._id}>
+                            <h2>{color.code}</h2>
                         </div>
                     ))}
                 </div>
